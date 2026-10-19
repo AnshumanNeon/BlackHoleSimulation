@@ -7,7 +7,6 @@ uniform vec4 iMouse;
 
 out vec4 fragColor;
 
-
 float hash(float x) { return fract(sin(x)*152754.742); }
 float hash(vec2 x) { return hash(x.x + hash(x.y)); }
 
@@ -62,7 +61,7 @@ void Rotate(inout vec3 vector, vec2 angle) {
 void main() {
   vec2 fragCoord = gl_FragCoord.xy;
   fragColor = vec4(0.0);
-  float _Size = 0.1;
+  float _Size = 0.3;
     
   vec2 fragCoordRot;
   fragCoordRot.x = fragCoord.x * 0.985 + fragCoord.y * 0.174;

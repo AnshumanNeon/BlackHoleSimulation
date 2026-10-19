@@ -19,6 +19,7 @@ int main() {
 
   float res[3] = {screenWidth, screenHeight, 1.0f};
 
+  DisableCursor();
   SetTargetFPS(60);
 
   while (!WindowShouldClose()) {
