@@ -1,6 +1,6 @@
 # Black Hole Simulation
 
-./showcase.mp4
+https://github.com/user-attachments/assets/1783529e-bfc8-4202-bfa0-245203667aa2
 
 This is a black hole simulation I made in C using Raylib and GLSL. The shader code inspired from this [shadertoy black hole simulation](https://www.shadertoy.com/view/tsBXW3). The original shader code adds accretion disk also, but here we don't use it.
 
