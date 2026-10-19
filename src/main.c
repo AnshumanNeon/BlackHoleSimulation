@@ -1,24 +1,40 @@
 #include "raylib.h"
 
 int main() {
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+  const int screenWidth = 800;
+  const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "Black Hole Simulation");
+  InitWindow(screenWidth, screenHeight, "Black Hole Simulation");
 
-    SetTargetFPS(60);
+  Texture tex = LoadTexture("stars.png");
+  SetTextureWrap(tex, TEXTURE_WRAP_REPEAT);
+  SetTextureFilter(tex, TEXTURE_FILTER_BILINEAR);
 
-    while (!WindowShouldClose()) {
-        // Update
+  Shader shader = LoadShader(0, TextFormat("shaders/black_hole.glsl"));
 
-        // Draw
-        BeginDrawing();
-            ClearBackground(RAYWHITE);
-        EndDrawing();
-    }
+  int iChannel0 = GetShaderLocation(shader, "iChannel0");
 
-    // De-Initialization
-    CloseWindow();
+  SetTargetFPS(60);
 
-    return 0;
+  while (!WindowShouldClose()) {
+    // Update
+    SetShaderValueTexture(shader, iChannel0, tex);
+
+    // Draw
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+
+    BeginShaderMode(shader);
+    DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
+    EndShaderMode();
+    
+    EndDrawing();
+  }
+
+  // De-Initialization
+  UnloadShader(shader);
+  UnloadTexture(tex);
+  CloseWindow();
+
+  return 0;
 }

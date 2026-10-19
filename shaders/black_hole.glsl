@@ -1,4 +1,4 @@
-#version 300 core
+#version 330 core
 
 uniform sampler2D iChannel0;
 
@@ -28,8 +28,8 @@ void main() {
   float _Size = 0.3; // size of black hole
 
   // set up camera (move in and up and down using mouse controls)
-  vec3 ray = normalize(vec3(fragCoordRot-fragCoord*0.5 + vec2(i,j) / fragCoord.x, 1));
-  vec3 pos = vec3(1, 1, 1);
+  vec3 ray = normalize(vec3(fragCoord.xy, 1));
+  vec3 pos = vec3(0., 0.05, -3.);
   // do this later
 
   vec4 col = vec4(0);
